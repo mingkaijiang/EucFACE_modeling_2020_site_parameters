@@ -106,9 +106,9 @@ make_wood_table <- function(ring_area){
     
     
     ### outDF
-    outDF <- summaryBy(Diameter+Biomass+BA+Height+Trees~Trt, FUN=c(mean, sd), data=outDF1, keep.names=T, na.rm=T)
+    #outDF <- summaryBy(Diameter+Biomass+BA+Height+Trees~Trt, FUN=c(mean, sd), data=outDF1, keep.names=T, na.rm=T)
     
 
-    return(outDF)
+    return(outDF1)
     
 }

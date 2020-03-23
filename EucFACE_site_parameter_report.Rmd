@@ -48,14 +48,14 @@ The dominant species is _Eucalyptus tereticornis_ Sm., accounting for >98% of th
 ``` {r, echo=FALSE, fig.width = 7, fig.align="center", warning=F, message=F}
     wood_table <- make_wood_table(ring_area=FACE_ring_area)
 
-    wood_table1 <- wood_table[,c("Trt", "Diameter.mean", "BA.mean", "Biomass.mean",
-                                 "Height.mean", "Trees.mean")]
-    
-    wood_table2 <- wood_table[,c("Trt", "Diameter.sd", "BA.sd", "Biomass.sd",
-                                 "Height.sd", "Trees.sd")]
+    #wood_table1 <- wood_table[,c("Trt", "Diameter.mean", "BA.mean", "Biomass.mean",
+    #                             "Height.mean", "Trees.mean")]
+    #
+    #wood_table2 <- wood_table[,c("Trt", "Diameter.sd", "BA.sd", "Biomass.sd",
+    #                             "Height.sd", "Trees.sd")]
 
-    kable(wood_table1, digits=2, col.names = c("Trt", "Mean diameter", "Basal area",
-                                               "Stem biomass", "Max height", 
+    kable(wood_table, digits=2, col.names = c("Trt", "Mean diameter", 
+                                               "Stem biomass", "Basal area", "Max height", 
                                                "Tree density"))  
     
     #kable(wood_table2, digits=2, col.names = c("Trt", "Mean diameter sd", "Basal area sd",
