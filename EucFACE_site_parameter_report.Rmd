@@ -5,11 +5,16 @@ date: "3/23/2020"
 output: pdf_document
 ---
 
+Any questions, contact Mingkai Jiang (m.jiang@westernsydney.edu.au)
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-### source the functions to start the calculations.
+    ### source the functions to start the calculations.
     source("prepare.R")
+
+    ###
     
     ### assign aco2 and eco2 rings
     aCO2_rings <- c(2,3,6)
@@ -17,22 +22,57 @@ knitr::opts_chunk$set(echo = TRUE)
     
 ```
 
-## R Markdown
+## General site description
+Site elevation: 22 m above sea level
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Site N deposition: 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Six plots at EucFACE, centered at: 
 
-```{r cars}
-summary(cars)
+**Table 1.** Plot latitude and longitude information at EucFACE
+
+``` {r, echo=FALSE, fig.width = 7, fig.align="center", warning=F}
+    siteDF <- read.csv("temp_files/site_information.csv")
+
+    kable(siteDF)    
+
 ```
 
-## Including Plots
+These plots are hexadecagons that are 25 m in diameter, with 32 vertical stand pipes for CO~2~ release. Plot area = ~490 m^2^. More detailed site description can be obtained from Jiang _et al._ (2020). 
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+**Table 2**. Biometrical description for plots/trees:
+``` {r, echo=FALSE, fig.width = 7, fig.align="center", warning=F, message=F}
+    wood_c_pool <- make_wood_c_pool(ring_area=FACE_ring_area, c_frac=c_fraction)
+
+    
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+The dominant species is _Eucalyptus tereticornis_ Sm., accounting for >98% of the stem area. Stem diameter is measured at breast height of 1.3m (DBH). Only trees with diameter > 10 cm at the start of the experiment (i.e. 2012) were included. Also, all dead trees (by 2019) were excluded. The estimated stem biomass was based on an allometric relationship in Paul _et al._ (2013), which uses DBH and height to estimate biomass. Here, the estimated stem biomass refers to dry matter. To obtain stem biomass in unit of carbon, you need to multiple dry matter by an average carbon fraction of 0.44. 
+
+
+The understorey is a diverse mixture of C3 and C4 vegetation, with _Microlaena stipoides_ – a C3 perennial grass dominating (~ accounting for 70% of the herbaceous biomass). 
+
+
+## Soil extractable water and texture 
+
+_Note:_ same as what's assumed in Medlyn _et al._ (2016)
+
+Total plant extractable soil water = 300 mm
+Rooting depth = 2 m 
+Effective field capacity = 530 mm (= 0.265 m3 m-3)
+Effective wilting point = 230 mm (= 0.115 m3 m-3)
+Notes: “effective” because it averages over the different soil layers (taking into account differences in texture, bulk density, wilting points estimated from release curves). 
+Field capacity was estimated from actual total storage estimates based on neutron probe measurements. This is fairly high because the soil drains poorly/slowly, so more water is actually available to the plant.
+
+Surface soil texture (upper 45 cm) for Clarenden sand: 80 ± 8% sand, 9 ± 5% silt, 11 ± 3% clay
+Source: Teresa Gimeno, Burhan Amiji & D. Ellsworth
+
+
+## References cited:
+
+Jiang _et al._ (2013). The fate of carbon in a mature forest under carbon dioxide enrichment. _Nature._.
+
+Paul _et al._ (2013). Development and testing of allometric equations for estimating aboveground biomass of mixed-species environmental plantings. _For. Ecol. Manage._ **310**, 483-494.
+
