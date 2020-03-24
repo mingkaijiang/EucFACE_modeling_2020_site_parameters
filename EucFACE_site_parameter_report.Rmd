@@ -90,13 +90,26 @@ Source: Teresa Gimeno, Burhan Amiji & D. Ellsworth
 
 **Table 3**. Soil physical properties
 ``` {r, echo=FALSE, fig.width = 7, fig.align="center", warning=F}
-    #soil.texture.information <- read.csv("temp_files/Soil_texture_information.csv")
+    soil_bulk_density <- make_soil_bulk_density()
+    soil_bulk_density$Trt <- "aCO2"
+    soil_bulk_density$Trt[soil_bulk_density$ring%in%c(1,4,5)] <- "eCO2"
+    soilBK <- summaryBy(bulk_density_kg_m3~Trt+Depth, FUN=c(mean, sd),
+                        data=soil_bulk_density, na.rm=T, keep.names=T)
 
-    #ktable(soil.texture.information)    
+    kable(soilBK)    
 
 ```
 
 **Table 4**. Soil nutrient concentrations
+``` {r, echo=FALSE, fig.width = 7, fig.align="center", warning=F}
+    soil_chemical_table <- make_soil_chemical_property_table(bk_density=soil_bulk_density)
+    
+    kable(soil_chemical_table,col.names = c("Depth", "pH", 
+                                            "totC", "totN", "totPppm", 
+                                             "pH_sd", 
+                                            "totC_sd", "totN_sd", "totPppm_sd"))    
+
+```
 
 ## 
 
